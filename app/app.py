@@ -121,6 +121,9 @@ def recommend():
         error_msg = f"Prediction error: {str(e)}"
         logging.error(f"❗ {error_msg}")
         return jsonify({"error": "Internal server error"}), 500
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({"message": "Flask ML API is running. Use /recommend endpoint for predictions."})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
